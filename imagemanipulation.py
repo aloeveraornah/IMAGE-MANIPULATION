@@ -15,35 +15,35 @@ for f in os.listdir("."):
         i.thumbnail(size_300)
         i.save("300/{}_300{}".format(fn,fext))
 
-image1= Image.open("wallpaper1.jpg")
-image1.rotate(90).show("wallpaper1.jpg")
+wallpaper1= Image.open("wallpaper1.jpg")
+wallpaper1.rotate(90).show("wallpaper1.jpg")
 
-image2 = Image.open("wallpaper2.jpg")
-image2.convert(mode = "L").show("wallpaper2.jpg")
+wallpaper2 = Image.open("wallpaper2.jpg")
+wallpaper2.convert(mode = "L").show("wallpaper2.jpg")
 
-image3 = Image.open("wallpaper3.jpg")
-image3.rotate(180).show("wallpaper3.jpg")
+wallpaper3 = Image.open("wallpaper3.jpg")
+wallpaper3.rotate(180).show("wallpaper3.jpg")
 
-image4 = Image.open("wallpaper4.jpg")
-image4.filter(ImageFilter.GaussianBlur(10)).show("wallpaper4.jpg")
+wallpaper4 = Image.open("wallpaper4.jpg")
+wallpaper4.filter(ImageFilter.GaussianBlur(10)).show("wallpaper4.jpg")
 
-image5 = Image.open("wallpaper5.jpg")
-image5.convert(mode = "L").show("wallpaper5.jpg")
+wallpaper5 = Image.open("wallpaper5.jpg")
+wallpaper5.convert(mode = "L").show("wallpaper5.jpg")
 
-image6 = Image.open("wallpaper6.jpg")
-image6.rotate(20).show("wallpaper6.jpg")
+wallpaper6 = Image.open("wallpaper6.jpg")
+wallpaper6.rotate(20).show("wallpaper6.jpg")
 
-image7 = Image.open("wallpaper7.jpg")
-image7.filter(ImageFilter.GaussianBlur(15)).show("wallpaper7.jpg")
+wallpaper7 = Image.open("wallpaper7.jpg")
+wallpaper7.filter(ImageFilter.GaussianBlur(15)).show("wallpaper7.jpg")
 
-image8 = Image.open("wallpaper8.jpg")
-image8.convert(mode = "L").show("wallpaper8.jpg")
+wallpaper8 = Image.open("wallpaper8.jpg")
+wallpaper8.convert(mode = "L").show("wallpaper8.jpg")
 
-image9 = Image.open("wallpaper9.jpg")
-image9.rotate(90).show("wallpaper9.jpg")
+wallpaper9 = Image.open("wallpaper9.jpg")
+wallpaper9.rotate(90).show("wallpaper9.jpg")
 
-image10 = Image.open("wallpaper10.jpg")
-image10.show("wallpaper10.jpg")
+wallpaper10 = Image.open("wallpaper10.jpg")
+wallpaper10.show("wallpaper10.jpg")
 
 wp_list = ["wallpaper1", "wallpaper2", "wallpaper3","wallpaper4", "wallpaper5", "wallpaper6","wallpaper7", "wallpaper8", "wallpaper9", "wallpaper10"]
 mod_list = ["rotate", "resize", "png", "blur", "black and white"]
@@ -53,6 +53,7 @@ def list(x):
         print(i)
     print("")
 
+#this function asks users what image they want to change
 def run():
     while True:
         print("Images: ")
@@ -67,6 +68,7 @@ def run():
                 print("Invalid Input\n")
         alterimage()
 
+#this function asks users if they want to edit a photo
 def editimage():
     choice = input ("Would you like to edit this photo? Type 'Y' (yes) or 'N' (no): ").upper()
     if choice == "Y":
@@ -77,6 +79,7 @@ def editimage():
     else:
         print("Invalid response, please try again")
 
+#this function asks users if they want to either rotate, resize, convert to png, blur, or change the shade to black and white
 def alterimage():
     while True:
         print ("Alter options: ")
