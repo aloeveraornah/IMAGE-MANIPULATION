@@ -1,76 +1,96 @@
 from PIL import Image, ImageFilter
 import os
 
-wallpaper1 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper1.jpg")
-wallpaper2 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper2.jpg")
-wallpaper3 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper3.jpg")
-wallpaper4 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper4.jpg")
-wallpaper5 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper5.jpg")
-wallpaper6 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper6.jpg")
-wallpaper7 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper7.jpg")
-wallpaper8 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper8.jpg")
-wallpaper9 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper9.jpg")
-wallpaper10 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper10.jpg")
+size_300 = (300,300)
+size_700 = (700,700)
 
-def to_size():
+for f in os.listdir("."):
+    if f.endswith(".jpg"):
+        i = Image.open(f)
+        fn, fext = os.path.splittext(f)
+
+        i.thumbnail(size_700)
+        i.save("700/{}_700{}".format(fn,fext))
+
+        i.thumbnail(size_300)
+        i.save("300/{}_300{}".format(fn,fext))
+
+image1= Image.open("wallpaper1.jpg")
+image1.rotate(90).show("wallpaper1.jpg")
+
+image2 = Image.open("wallpaper2.jpg")
+image2.convert(mode = "L").show("wallpaper2.jpg")
+
+image3 = Image.open("wallpaper3.jpg")
+image3.rotate(180).show("wallpaper3.jpg")
+
+image4 = Image.open("wallpaper4.jpg")
+image4.filter(ImageFilter.GaussianBlur(10)).show("wallpaper4.jpg")
+
+image5 = Image.open("wallpaper5.jpg")
+image5.convert(mode = "L").show("wallpaper5.jpg")
+
+image6 = Image.open("wallpaper6.jpg")
+image6.rotate(20).show("wallpaper6.jpg")
+
+image7 = Image.open("wallpaper7.jpg")
+image7.filter(ImageFilter.GaussianBlur(15)).show("wallpaper7.jpg")
+
+image8 = Image.open("wallpaper8.jpg")
+image8.convert(mode = "L").show("wallpaper8.jpg")
+
+image9 = Image.open("wallpaper9.jpg")
+image9.rotate(90).show("wallpaper9.jpg")
+
+image10 = Image.open("wallpaper10.jpg")
+image10.show("wallpaper10.jpg")
+
+wp_list = ["wallpaper1", "wallpaper2", "wallpaper3","wallpaper4", "wallpaper5", "wallpaper6","wallpaper7", "wallpaper8", "wallpaper9", "wallpaper10"]
+mod_list = ["rotate", "resize", "png", "blur", "black and white"]
+
+def list(x):
+    for i in x:
+        print(i)
+    print("")
+
+def run():
     while True:
-        thumbnail_size = int(input("Enter thumbnail size (200, 400 or 600): "))
-        dimensions = (thumbnail_size, thumbnail_size)
+        print("Images: ")
+        list(wp_list)
+        change = input("What image would you like to change?: ").lower()
+        if change in wp_list:
+            userImage = Image.open(f"{change}.jpg")
+            userImage.show()
+            if editimage() == True:
+                break
+            else:
+                print("Invalid Input\n")
+        alterimage()
 
-        if thumbnail_size == 200 or thumbnail_size == 400 or thumbnail_size == 600:
+def editimage():
+    choice = input ("Would you like to edit this photo? Type 'Y' (yes) or 'N' (no): ").upper()
+    if choice == "Y":
+        return True
+    elif choice == "N":
+        print("")
+        run()
+    else:
+        print("Invalid response, please try again")
 
-            for f in os.listdir("."):
-                if f.endswith(".jpg"):
-                    i = Image.open(f)
-                    fn, fext = os.path.splitext(f)
-
-                    i.thumbnail(dimensions)
-                    i.save(f"{thumbnail_size}/{thumbnail_size}_{thumbnail_size}{thumbnail_size}".format(fn, fext))
-
-            break
-        else:
-            continue
-
-def to_png():
+def alterimage():
     while True:
-        switch = input("Convert jpg to png? Enter 'Y' for yes or 'N' for no").upper()
-
-        if switch == "Y":
-
-            for f in os.listdir("."):
-                if f.endswith(".jpg"):
-                    i = Image.open(f)
-                    fn, fext = os.path.splitext(f)
-                    i.save("png/{}.png".format(fn))
-
-        elif switch == "N":
-            break
-        else:
-            continue
-
-def to_rotate():
-    wallpaper1 = wallpaper1.rotate(90).save("/Users/chrispark/Downloads/Pillow/wallpaper1.jpg")
-    wallpaper1 = Image.open("/Users/chrispark/Downloads/Pillow/wallpaper1.jpg")
-
-def to_shades():
-    wallpaper1.convert(mode="L").save("/Users/chrispark/Downloads/Pillow/wallpaper4.jpg")
-    wallpaper2.convert(mode="L").save("/Users/chrispark/Downloads/Pillow/wallpaper5.jpg")
-    wallpaper3.convert(mode="L").save("/Users/chrispark/Downloads/Pillow/wallpaper6.jpg")
-    wallpaper4.convert(mode="L").save("/Users/chrispark/Downloads/Pillow/wallpaper7.jpg")    
-
-def to_blur():
-    while True:
-        blur = int(input("How much do you want to blur some images? (30, 40 or 50): "))
-        if blur == 30 or blur == 40 or blur == 50:
-            wallpaper1.filter(ImageFilter.GaussianBlur(blur)).save("/Users/chrispark/Downloads/Pillow/wallpaper8.jpg")
-            wallpaper2.filter(ImageFilter.GaussianBlur(blur)).save("/Users/chrispark/Downloads/Pillow/wallpaper9.jpg")
-            wallpaper3.filter(ImageFilter.GaussianBlur(blur)).save("/Users/chrispark/Downloads/Pillow/wallpaper10.jpg")
-            break
-        else:
-            continue
-
-to_size()
-to_png()
-to_rotate()
-to_shades()
-to_blur()
+        print ("Alter options: ")
+        list(mod_list)
+        alter = input("Select alter mode: ").lower()
+        if alter in mod_list:
+            if editimage() == True:
+                if alter == mod_list[0]:
+                    alter.rotate()
+                if alter == mod_list[1]:
+                    alter.resize()
+                if alter == mod_list[2]:
+                    alter.png()
+                if alter == mod_list[3]:
+                    alter.blur()
+                if alter == mod_list[4]:
+                    alter.blacknwhite()
