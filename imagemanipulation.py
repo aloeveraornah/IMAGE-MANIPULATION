@@ -8,40 +8,29 @@ for f in os.listdir("."):
     if f.endswith(".jpg"):
         i = Image.open(f)
         fn, fext = os.path.splittext(f)
-
         i.thumbnail(size_700)
         i.save("700/{}_700{}".format(fn,fext))
-
         i.thumbnail(size_300)
         i.save("300/{}_300{}".format(fn,fext))
 
 wallpaper1= Image.open("wallpaper1.jpg")
 wallpaper1.rotate(90).show("wallpaper1.jpg")
-
 wallpaper2 = Image.open("wallpaper2.jpg")
 wallpaper2.convert(mode = "L").show("wallpaper2.jpg")
-
 wallpaper3 = Image.open("wallpaper3.jpg")
 wallpaper3.rotate(180).show("wallpaper3.jpg")
-
 wallpaper4 = Image.open("wallpaper4.jpg")
 wallpaper4.filter(ImageFilter.GaussianBlur(10)).show("wallpaper4.jpg")
-
 wallpaper5 = Image.open("wallpaper5.jpg")
 wallpaper5.convert(mode = "L").show("wallpaper5.jpg")
-
 wallpaper6 = Image.open("wallpaper6.jpg")
 wallpaper6.rotate(20).show("wallpaper6.jpg")
-
 wallpaper7 = Image.open("wallpaper7.jpg")
 wallpaper7.filter(ImageFilter.GaussianBlur(15)).show("wallpaper7.jpg")
-
 wallpaper8 = Image.open("wallpaper8.jpg")
 wallpaper8.convert(mode = "L").show("wallpaper8.jpg")
-
 wallpaper9 = Image.open("wallpaper9.jpg")
 wallpaper9.rotate(90).show("wallpaper9.jpg")
-
 wallpaper10 = Image.open("wallpaper10.jpg")
 wallpaper10.show("wallpaper10.jpg")
 
